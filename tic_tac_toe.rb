@@ -24,10 +24,6 @@ class TicTacToeGame
                 false
               end
   end
-
-  def winner
-
-  end
 end
 
 class TicTacToeBoard
@@ -82,7 +78,7 @@ class TicTacToeBoard
 
   def won_by?(player)
     player_posiotions = fields_for(player).map(&:position).sort
-    winning_positions.include? player_posiotions
+    winning_positions.any? { |winning_possition| (winning_possition - player_posiotions).empty? }
   end
 
   def winning_positions
